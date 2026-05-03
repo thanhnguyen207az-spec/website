@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description"
+        content="Đăng nhập vào Cosmic Portfolio - Website giới thiệu cá nhân và cửa hàng trực tuyến">
+    <title>🔐 Đăng Nhập | Cosmic Portfolio</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌌</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Login Stylesheet -->
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <canvas id="login-starfield"></canvas>
+
+    <!-- Auth Page Container -->
+    <div class="auth-page" id="auth-page">
+
+        <!-- ===== LOGIN VIEW ===== -->
+        <div class="auth-view auth-view--login active" id="view-login">
+            <div class="auth-hero">
+                <div class="auth-hero-glow"></div>
+                <div class="auth-hero-content">
+                    <span class="auth-brand-icon">🌌</span>
+                    <h1 class="auth-hero-title">ĐĂNG NHẬP</h1>
+                    <p class="auth-hero-desc">Chào mừng bạn trở lại hệ thống.</p>
+                </div>
+            </div>
+
+            <div class="auth-body">
+                <form id="login-form" autocomplete="off">
+                    <div class="auth-field">
+                        <label class="auth-label" for="login-username">TÊN ĐĂNG NHẬP</label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-user auth-input-icon"></i>
+                            <input type="text" id="login-username" placeholder="Nhập username hoặc email" required>
+                        </div>
+                    </div>
+
+                    <div class="auth-field">
+                        <div class="auth-label-row">
+                            <label class="auth-label" for="login-password">MẬT KHẨU</label>
+                            <a href="#" class="auth-forgot">Quên?</a>
+                        </div>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-lock auth-input-icon"></i>
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <div id="login-error" class="auth-error"></div>
+
+                    <button type="submit" class="auth-submit" id="login-btn">
+                        <span>ĐĂNG NHẬP HỆ THỐNG</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <p class="auth-switch">
+                    Chưa có tài khoản? <button type="button" class="auth-switch-btn" id="signUp-btn">ĐĂNG KÝ
+                        NGAY</button>
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== REGISTER VIEW ===== -->
+        <div class="auth-view auth-view--register" id="view-register">
+            <div class="auth-hero">
+                <div class="auth-hero-glow"></div>
+                <div class="auth-hero-content">
+                    <span class="auth-brand-icon">🌌</span>
+                    <h1 class="auth-hero-title">TẠO TÀI KHOẢN</h1>
+                    <p class="auth-hero-desc">Bắt đầu hành trình khám phá cùng chúng tôi.</p>
+                </div>
+            </div>
+
+            <div class="auth-body">
+                <form id="register-form" autocomplete="off">
+                    <div class="auth-field">
+                        <label class="auth-label" for="reg-username">TÊN ĐĂNG NHẬP</label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-user auth-input-icon"></i>
+                            <input type="text" id="reg-username" placeholder="username" required>
+                        </div>
+                    </div>
+
+                    <div class="auth-field">
+                        <label class="auth-label" for="reg-email">ĐỊA CHỈ EMAIL</label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-envelope auth-input-icon"></i>
+                            <input type="email" id="reg-email" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="auth-field">
+                        <label class="auth-label" for="reg-password">MẬT KHẨU</label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-lock auth-input-icon"></i>
+                            <input type="password" id="reg-password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <div class="auth-field">
+                        <label class="auth-label" for="reg-confirm">XÁC NHẬN MẬT KHẨU</label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-shield-alt auth-input-icon"></i>
+                            <input type="password" id="reg-confirm" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <div id="register-error" class="auth-error"></div>
+                    <div id="register-success" class="auth-success"></div>
+
+                    <button type="submit" class="auth-submit" id="register-btn">
+                        <span>ĐĂNG KÝ TÀI KHOẢN</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <p class="auth-switch">
+                    Đã có tài khoản? <button type="button" class="auth-switch-btn" id="signIn-btn">ĐĂNG NHẬP
+                        NGAY</button>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- Firebase SDK (compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+
+    <!-- Firebase Config & Sync -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/sync.js"></script>
+
+    <script src="js/auth.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            // Initialize Firebase sync for user accounts
+            if (typeof CosmicSync !== 'undefined') {
+                CosmicSync.init({ users: function () { /* users synced */ } });
+            }
+
+            // Redirect nếu đã đăng nhập
+            if (CosmicAuth.redirectIfLoggedIn()) return;
+
+            // ===== STARFIELD BACKGROUND =====
+            const canvas = document.getElementById('login-starfield');
+            const ctx = canvas.getContext('2d');
+            let stars = [];
+            const STAR_COUNT = 200;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function createStars() {
+                stars = [];
+                for (let i = 0; i < STAR_COUNT; i++) {
+                    stars.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        radius: Math.random() * 1.5 + 0.3,
+                        alpha: Math.random() * 0.8 + 0.2,
+                        speed: Math.random() * 0.3 + 0.05,
+                        twinkleSpeed: Math.random() * 0.02 + 0.005
+                    });
+                }
+            }
+
+            function drawStars() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                stars.forEach(function (star) {
+                    star.alpha += star.twinkleSpeed;
+                    if (star.alpha > 1 || star.alpha < 0.2) {
+                        star.twinkleSpeed *= -1;
+                    }
+                    star.y -= star.speed;
+                    if (star.y < -5) {
+                        star.y = canvas.height + 5;
+                        star.x = Math.random() * canvas.width;
+                    }
+
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(200, 180, 255, ' + star.alpha + ')';
+                    ctx.fill();
+                });
+                requestAnimationFrame(drawStars);
+            }
+
+            resizeCanvas();
+            createStars();
+            drawStars();
+            window.addEventListener('resize', function () {
+                resizeCanvas();
+                createStars();
+            });
+
+            // ===== VIEW SWITCHING (with smooth animation) =====
+            var loginView = document.getElementById('view-login');
+            var registerView = document.getElementById('view-register');
+            var signUpBtn = document.getElementById('signUp-btn');
+            var signInBtn = document.getElementById('signIn-btn');
+
+            function showView(showEl, hideEl, direction) {
+                var isDesktop = window.matchMedia('(min-width: 769px)').matches;
+                var base = isDesktop ? 'translate(-50%, -50%) ' : '';
+                var offset = 60;
+
+                hideEl.style.transition = 'all 0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+                showEl.style.transition = 'none';
+
+                // Set starting position for incoming view
+                if (direction === 'left') {
+                    showEl.style.transform = base + 'translateX(' + offset + 'px)';
+                    hideEl.style.transform = base + 'translateX(-' + offset + 'px)';
+                } else {
+                    showEl.style.transform = base + 'translateX(-' + offset + 'px)';
+                    hideEl.style.transform = base + 'translateX(' + offset + 'px)';
+                }
+                showEl.style.opacity = '0';
+                hideEl.style.opacity = '0';
+
+                hideEl.classList.remove('active');
+
+                // Force reflow
+                void showEl.offsetWidth;
+
+                // Animate in
+                requestAnimationFrame(function () {
+                    showEl.style.transition = 'all 0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+                    showEl.style.transform = base + 'translateX(0)';
+                    showEl.style.opacity = '1';
+                    showEl.classList.add('active');
+                    showEl.scrollTop = 0;
+
+                    // Clean up inline styles after animation completes
+                    setTimeout(function () {
+                        showEl.style.transition = '';
+                        showEl.style.transform = '';
+                        showEl.style.opacity = '';
+                        hideEl.style.transition = '';
+                        hideEl.style.transform = '';
+                        hideEl.style.opacity = '';
+                    }, 500);
+                });
+            }
+
+            signUpBtn.addEventListener('click', function () {
+                showView(registerView, loginView, 'left');
+            });
+
+            signInBtn.addEventListener('click', function () {
+                showView(loginView, registerView, 'right');
+            });
+
+            // ===== LOGIN FORM =====
+            document.getElementById('login-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                var errorEl = document.getElementById('login-error');
+                errorEl.textContent = '';
+
+                var username = document.getElementById('login-username').value.trim();
+                var password = document.getElementById('login-password').value;
+
+                var btn = document.getElementById('login-btn');
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang xử lý...';
+
+                setTimeout(function () {
+                    var result = CosmicAuth.login(username, password);
+                    if (result.success) {
+                        btn.innerHTML = '<i class="fas fa-check"></i> Thành công!';
+                        btn.classList.add('success');
+                        setTimeout(function () {
+                            window.location.href = 'index.html';
+                        }, 800);
+                    } else {
+                        errorEl.textContent = result.message;
+                        btn.disabled = false;
+                        btn.innerHTML = '<span>ĐĂNG NHẬP HỆ THỐNG</span><i class="fas fa-arrow-right"></i>';
+                        errorEl.classList.add('shake');
+                        setTimeout(function () { errorEl.classList.remove('shake'); }, 500);
+                    }
+                }, 600);
+            });
+
+            // ===== REGISTER FORM =====
+            document.getElementById('register-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                var errorEl = document.getElementById('register-error');
+                var successEl = document.getElementById('register-success');
+                errorEl.textContent = '';
+                successEl.textContent = '';
+
+                var username = document.getElementById('reg-username').value.trim();
+                var email = document.getElementById('reg-email').value.trim();
+                var password = document.getElementById('reg-password').value;
+                var confirm = document.getElementById('reg-confirm').value;
+
+                var btn = document.getElementById('register-btn');
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang xử lý...';
+
+                setTimeout(function () {
+                    var result = CosmicAuth.register(username, email, password, confirm);
+                    if (result.success) {
+                        successEl.textContent = result.message;
+                        btn.innerHTML = '<i class="fas fa-check"></i> Thành công!';
+                        btn.classList.add('success');
+
+                        // Chuyển sang form đăng nhập sau 1.5s
+                        setTimeout(function () {
+                            showView(loginView, registerView, 'right');
+                            document.getElementById('login-username').value = username;
+                            btn.disabled = false;
+                            btn.classList.remove('success');
+                            btn.innerHTML = '<span>ĐĂNG KÝ TÀI KHOẢN</span><i class="fas fa-arrow-right"></i>';
+                            document.getElementById('register-form').reset();
+                            successEl.textContent = '';
+                        }, 1500);
+                    } else {
+                        errorEl.textContent = result.message;
+                        btn.disabled = false;
+                        btn.innerHTML = '<span>ĐĂNG KÝ TÀI KHOẢN</span><i class="fas fa-arrow-right"></i>';
+                        errorEl.classList.add('shake');
+                        setTimeout(function () { errorEl.classList.remove('shake'); }, 500);
+                    }
+                }, 600);
+            });
+
+        })();
+    </script>
+
+</body>
+
+</html>
